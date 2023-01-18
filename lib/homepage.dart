@@ -8,133 +8,293 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List questionlist = [
-    "1. In the Film OMG, Oh My God Kanji \nBhai filed a case against whom for the\n damage of his shop due to an \nearthquake?",
-    "2. What is The New Name Of The \n Hyderabad frachise that would replace \n Deccan Charges in Ipl 6?",
+  bool t = false;
+  List Questions = [
+    "1.Who is Peterolium Minister in 2000 in India",
+    "2.Who is 1st Female Pm of India",
+    "3.Which one of the following river flows between Vindhyan and Satpura ranges?",
+    "4.The Central Rice Research Station is situated in?",
+    "5.Who among the following wrote Sanskrit grammar?",
+  ];
+  List Ans = [
+    "Hardeep Singh Puri",
+    "Indira Gandhi",
+    "Narmada",
+    "Cuttack",
+    "Panini",
   ];
 
-  List A = ["A.Bharat Mata", "A.Sun Chargers"];
-  List B = ["B.Parliament", "B.Nizam Jyothi"];
-  List C = ["C.Mumbai City", "C.Andhra Aces"];
-  List D = ["D.Bhagvan", "D.Sun risers Hydearabad"];
+  List OptA = [
+    "Narandre Modi",
+    "Indira Gandhi",
+    "Narmada",
+    "Chennai",
+    "Kalidasa",
+  ];
+  List OptB = [
+    "Rahul Gandhi",
+    "Rekha",
+    "Mahanadi",
+    "Cuttack",
+    "Charak",
+  ];
+  List OptC = [
+    "Akshar Kumar",
+    "Srusti",
+    "Son",
+    "Bangalore",
+    "Panini",
+  ];
+  List OptD = [
+    "Hardeep Singh Puri",
+    "Sarasvati",
+    "Netravati",
+    "Quilon",
+    "Aryabhatt",
+  ];
+  List<Color> c = [
+    Colors.green,
+    Colors.blue,
+    Colors.grey,
+    Colors.orangeAccent,
+    Colors.purpleAccent
+  ];
+  List UserAns = [];
 
-  List answerList = [];
-  List userAnswerList = [];
-
-  int i = 0;
-  int point = 0;
-  int count = 0;
+  int i = 0, j = 0;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-      appBar: AppBar(
-        title: Text("Play KBC"),
-        leading: Icon(Icons.menu),
-        centerTitle: true,
-        elevation: 0,
-        backgroundColor: Colors.blue,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(20),
-            child: Icon(Icons.refresh),
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              height: 300,
-              width: double.infinity,
-              alignment: Alignment.center,
-              child: Text(
-                "Which City Is Smart ?",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-              ),
-              decoration: BoxDecoration(color: Colors.purpleAccent.shade400),
-            ),
-            Container(
-              height: 300,
-              width: double.infinity,
-              decoration: BoxDecoration(color: Colors.black),
-              child: Padding(
-                padding: const EdgeInsets.all(80),
-                child: Row(
+      body: Column(
+        children: [
+          Expanded(
+              flex: 1,
+              child: Container(
+                padding: EdgeInsets.all(10),
+                color: c[i],
+                alignment: Alignment.center,
+                child: Text(
+                  "${Questions[i]}",
+                  style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
+                ),
+              )),
+          Expanded(
+              flex: 1,
+              child: Container(
+                color: Colors.black,
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Column(
+                    Row(
                       children: [
-                        Container(
-                          height: 30,
-                          width: 100,
-                          alignment: Alignment.center,
-                          child: Text(
-                            "A.Mumbai",
-                            style: TextStyle(color: Color(0xffa8a8a9)),
+                        Expanded(
+                          flex: 1,
+                          child: InkWell(
+                            onTap: () {
+                              if (j < 6) {
+                                UserAns.add("${OptA[i]}");
+                                setState(() {
+                                  if (UserAns[i] == Ans[i]) {
+                                    Navigator.pushNamed(context, 'second');
+                                    if (i < 4) {
+                                      i++;
+                                      j++;
+                                    }
+                                    if (i == 4) {
+                                      j++;
+                                    }
+                                  } else {
+                                    Navigator.pushNamed(context, 'third');
+                                    i = 0;
+                                    j = 0;
+                                    UserAns.clear();
+                                  }
+                                });
+                              }
+                            },
+                            child: Container(
+                              margin: EdgeInsets.only(left: 10),
+                              height: 60,
+                              decoration: BoxDecoration(
+                                color: Color(0xff1E2022),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              alignment: Alignment.center,
+                              child: Text(
+                                "A.${OptA[i]}",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                            ),
                           ),
-                          decoration: BoxDecoration(
-                              color: Color(0xff1e1f23),
-                              borderRadius: BorderRadius.circular(10)),
                         ),
                         SizedBox(
-                          height: 15,
+                          width: 15,
                         ),
-                        Container(
-                          height: 30,
-                          width: 100,
-                          alignment: Alignment.center,
-                          child: Text(
-                            "C.Surat",
-                            style: TextStyle(color: Color(0xffa8a8a9)),
+                        Expanded(
+                          flex: 1,
+                          child: InkWell(
+                            onTap: () {
+                              if (j < 6) {
+                                UserAns.add("${OptB[i]}");
+                                setState(() {
+                                  if (UserAns[i] == Ans[i]) {
+                                    Navigator.pushNamed(context, 'second');
+                                    if (i < 4) {
+                                      i++;
+                                      j++;
+                                    }
+                                    if (i == 4) {
+                                      j++;
+                                    }
+                                  } else {
+                                    Navigator.pushNamed(context, 'third');
+                                    i = 0;
+                                    j = 0;
+                                    UserAns.clear();
+                                  }
+                                });
+                              }
+                            },
+                            child: Container(
+                              margin: EdgeInsets.only(right: 10),
+                              height: 60,
+                              decoration: BoxDecoration(
+                                color: Color(0xff1e2022),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              alignment: Alignment.center,
+                              child: Text(
+                                "C.${OptB[i]}",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                            ),
                           ),
-                          decoration: BoxDecoration(
-                              color: Color(0xff1e1f23),
-                              borderRadius: BorderRadius.circular(10)),
                         ),
                       ],
                     ),
                     SizedBox(
-                      width: 15,
+                      height: 20,
                     ),
-                    Column(
+                    Row(
                       children: [
-                        Container(
-                          height: 30,
-                          width: 100,
-                          alignment: Alignment.center,
-                          child: Text(
-                            "B.Ankleshwar",
-                            style: TextStyle(color: Color(0xffa8a8a9)),
+                        Expanded(
+                          flex: 1,
+                          child: InkWell(
+                            onTap: () {
+                              if (j < 6) {
+                                UserAns.add("${OptC[i]}");
+
+                                setState(() {
+                                  if (UserAns[i] == Ans[i]) {
+                                    Navigator.pushNamed(context, 'second');
+                                    if (i < 4) {
+                                      i++;
+                                      j++;
+                                    }
+                                    if (i == 4) {
+                                      j++;
+                                    }
+                                  } else {
+                                    Navigator.pushNamed(context, 'third');
+                                    i = 0;
+                                    j = 0;
+                                    UserAns.clear();
+                                  }
+                                });
+                              }
+                            },
+                            child: Container(
+                              margin: EdgeInsets.only(left: 10),
+                              height: 60,
+                              decoration: BoxDecoration(
+                                color: Color(0xff1e2022),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              alignment: Alignment.center,
+                              child: Text(
+                                "B.${OptC[i]}",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                            ),
                           ),
-                          decoration: BoxDecoration(
-                              color: Color(0xff1e1f23),
-                              borderRadius: BorderRadius.circular(10)),
                         ),
                         SizedBox(
-                          height: 15,
+                          width: 15,
                         ),
-                        Container(
-                          height: 30,
-                          width: 100,
-                          alignment: Alignment.center,
-                          child: Text(
-                            "D.Delhi",
-                            style: TextStyle(color: Color(0xffa8a8a9)),
+                        Expanded(
+                          flex: 1,
+                          child: InkWell(
+                            onTap: () {
+                              if (j < 6) {
+                                UserAns.add("${OptD[i]}");
+
+                                setState(() {
+                                  if (UserAns[i] == Ans[i]) {
+                                    Navigator.pushNamed(context, 'second');
+                                    if (i < 4) {
+                                      i++;
+                                      j++;
+                                    }
+                                    if (i == 4) {
+                                      j++;
+                                    }
+                                  } else {
+                                    Navigator.pushNamed(context, 'third');
+                                    i = 0;
+                                    j = 0;
+                                    UserAns.clear();
+                                  }
+                                });
+                              }
+                            },
+                            child: Container(
+                              margin: EdgeInsets.only(right: 10),
+                              height: 60,
+                              decoration: BoxDecoration(
+                                color: Color(0xff1e2022),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              alignment: Alignment.center,
+                              child: Text(
+                                "D.${OptD[i]}",
+                                style: TextStyle(color: Colors.grey),
+                              ),
+                            ),
                           ),
-                          decoration: BoxDecoration(
-                              color: Color(0xff1e1f23),
-                              borderRadius: BorderRadius.circular(10)),
                         ),
                       ],
                     ),
+                    SizedBox(
+                      height: 30,
+                    ),
+                    Visibility(
+                      visible: j >= 6 ? true : false,
+                      child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              j = 0;
+                              i = 0;
+                              UserAns.clear();
+                            });
+                          },
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.purple),
+                          child: Center(
+                            child: Text(
+                              "Reset",
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          )),
+                    )
                   ],
                 ),
-              ),
-            ),
-          ],
-        ),
+              )),
+        ],
       ),
     ));
   }

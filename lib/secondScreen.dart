@@ -39,17 +39,22 @@ class _TrueState extends State<True> {
             SizedBox(
               height: 20,
             ),
-            Container(
-              height: 30,
-              width: 100,
-              alignment: Alignment.center,
-              child: Text(
-                "NEXT",
-                style: TextStyle(color: Color(0xffd6d6d6)),
+            InkWell(
+              onTap: (){
+                Navigator.pop(context);
+              },
+              child: Container(
+                height: 30,
+                width: 100,
+                alignment: Alignment.center,
+                child: Text(
+                  "NEXT",
+                  style: TextStyle(color: Color(0xffd6d6d6)),
+                ),
+                decoration: BoxDecoration(
+                    color: Color(0xff1e1f23),
+                    borderRadius: BorderRadius.circular(10)),
               ),
-              decoration: BoxDecoration(
-                  color: Color(0xff1e1f23),
-                  borderRadius: BorderRadius.circular(10)),
             ),
           ],
         ),

@@ -7,7 +7,9 @@ void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     routes: {
-      '/': (context) => FalsePage(),
+      '/': (context) => HomePage(),
+      'second':(context) => True(),
+      'third':(context) => FalsePage(),
     },
   ));
 }
